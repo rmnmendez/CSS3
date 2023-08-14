@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-/* || Reset */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
 
 * {
   margin: 0;
@@ -8,190 +6,97 @@
   box-sizing: border-box;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* || Utility Classes */
-
-.nowrap {
-  white-space: nowrap;
-}
-
-/* || General Styles */
-
-html { 
-  scroll-behavior: smooth;
+html {
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  font: 'Montserrat', sans-serif;
   min-height: 100vh;
-  background-color: #475569;
-  background-image: radial-gradient(whitesmoke, #475569);
   display: flex;
-  flex-direction: column;
-}
-
-header, footer {
-  position: sticky;
-  background-color: #1E293B;
-  color: whitesmoke;
-  text-align: center;
-}
-
-header {
-  top: 0;
-}
-
-nav {
-  background-color: #fff;
-  padding: 0.5rem;
-  border-bottom: 2px solid #000;
-  font-weight: bolder;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-nav a, nav a:visited {
-  color: #000;
-}
-
-nav a:hover, nav a:focus {
-  color: hsla (0, 0%, 20%, 0.6);
+  flex-flow: column nowrap;
 }
 
 main {
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1rem;
-}
-
-footer {
-  bottom: 0;
-}
-
-/* || Profile Card */
-
-.card {
-  scroll-margin-top: 8rem;
-  width: min(100%, 350px);
-  background-color: #cbd5e1;
-  border: 2px solid #000;
-  border-radius: 15px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.card figure {
-  display: flex;
   flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
-.card img {
-  border: 5px double #333;
-  border-radius: 50%;
+div {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000;
+  display: grid;
+  place-content: center;
 }
 
-.card figcaption {
-  font-weight: bolder;
-  font-size: 2rem;
-  margin: 1rem;
-  text-align: center;
+div:first-child {
+  background-color: dodgerblue;
+  /* transform: translateX(-50%); */
+  /* transform: rotateX(180deg); */
+  /* transform: scaleX(120%); */
+  /* transform: skewX(-10deg); */
 }
 
-/* || Small */
-
-@media screen and (min-width: 576px) {
-  main {
-    justify-content: center;
-    flex-flow: row wrap;
-    padding: 1rem;
-  }
-
-  .card {
-    width: min(100%, 400px);
-  }
-
-  .card:last-child {
-    order: -1;
-  }
+div:nth-child(2) {
+  background-color: yellow;
+  /* transform: translateY(-2rem); */
+  /* transform: rotateY(180deg); */
+  /* transform: scaleY(120%); */
+  /* transform: skewY(10deg); */
 }
 
-/* || Medium */
-
-@media screen and (min-width: 768px) {
-  nav {
-    display: none;
-  }
-
-  .card {
-    width: min(100%, 325px)
-  }
-
-  .card figure {
-    flex-flow: column-reverse;
-  }
-
-  /* .card figcaption {
-    margin: 0.1em 0;
-  } */
-
-  .card p {
-    margin: 1rem;
-  }
+div:last-child {
+  background-color: limegreen;
+  /* transform: translate(100%, -5rem); */
+  /* transform: rotate(69deg); */
+  /* transform: scale(50%, 50%); */
+  /* transform: skew(-10deg, -10deg); */
 }
 
-/* || Large */
-
-@media screen and (min-width: 992px) {
-  .card {
-    width: min(100%, 400px);
-  }
-
-  .card:nth-child(2) {
-    order: -1;
-  }
+div:hover {
+  background-color: midnightblue;
+  /* /* transition-property: background-color, transform;
+  transition-duration: 2s, 3s;
+  transition-delay: 0.5s; 
+  transition-timing-function: linear; */
+  transition: all 2s ease-in-out 0.5s;
 }
 
-/* || X-Large */
-
-@media screen and (min-width: 1200px) {
-  .card {
-    width: min(calc(33% - 1rem), 500px)
-  }
+div:last-child:hover {
+  transform: rotate(180deg);
 }
 
-/* || Mobile Device Landscape */
+.animate {
+  /* animation-name: slide;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: 5;
+  animation-direction: normal;
+  animation-fill-mode: forwards; */
+  animation: 5s ease-in-out 1s 2 normal forwards slide;
+}
 
-@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
-
-  h1 {
-    font-size: 1.5rem;
+@keyframes slide {
+  0% {
+    transform: translate(0)
   }
 
-  nav {
-    display: none;
+  33% {
+    transform: translateX(300px) rotate(180deg);
   }
 
-  main {
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: stretch;
+  66% {
+    transform: translateX(-300px) rotate(-180deg);
   }
 
-  .card {
-    width: min(calc(33% - 0.25rem), 200px);
-  }
-
-  .card figcaption, .card p {
-    font-size: 1.25rem;
+  100% {
+    transform: translateX(0);
+    background-color: rebeccapurple;
   }
 }
